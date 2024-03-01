@@ -2,7 +2,7 @@ import amqp from "amqplib/callback_api";
 
 async function connect() {
     try {
-        await amqp.connect(
+        amqp.connect(
             //Escuhando a:
             "amqp://34.224.23.35",
             (err: any, conn: amqp.Connection) => {
@@ -32,8 +32,8 @@ async function connect() {
                                 })
                                 .catch((err: any) => {
                                     throw new Error(err);
-                                }); 
-                            await channel.ack(data);
+                                });
+                            channel.ack(data);
                         }
                     });
                 });
